@@ -3,20 +3,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   rescue_from ActionController::ParameterMissing, with: :handle_missing_required_params_error
-
+	rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found_error
 
 	def build_success_response(data = nil)
 		json = {
 			:result_status => 'success',
-			:result_data => { :code => 100, :message => 'OK', :data => data },
-		}.to_json;
+			:result_data => { :code => 200, :message => 'OK', :data => data },
+		}.to_json
 	end
 
 	def build_error_response(code, message, data = nil)
 		json = {
 			:result_status => 'error',
 			:result_data => { :code => code, :message => message, :data => data },
-		}.to_json;
+		}.to_json
 	end
 
 	def handle_missing_required_params_error(exception)
@@ -35,9 +35,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	def stringify_params(params)
-		stringifiedParams = '';
+		stringifiedParams = ''
 		params.except(:action, :controller).each { |key, value| stringifiedParams << "#{key} - #{value} "}
-		return stringifiedParams
+		return stringifiedParams.chop
 	end
 
 end

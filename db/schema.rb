@@ -11,13 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030045704) do
+ActiveRecord::Schema.define(version: 20170315033709) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "teams", force: :cascade do |t|
     t.string   "slack_key"
     t.boolean  "active",     default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "weapon_attributes", force: :cascade do |t|
+    t.string   "label"
+    t.string   "value_type"
+    t.string   "zero_familiarity_max_value"
+    t.string   "max_familiarity_max_value"
+    t.string   "rarity"
+    t.string   "notes"
+    t.string   "sub_group"
+    t.boolean  "active",                     default: true
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
 end

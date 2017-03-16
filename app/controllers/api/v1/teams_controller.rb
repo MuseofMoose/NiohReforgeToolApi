@@ -25,6 +25,7 @@ class Api::V1::TeamsController < ApplicationController
 	end
 
 	def update_by_id
+		#Replace update with update! or something that allows the validation to work
 		updatedTeam = Team.update(params[:id], update_params)
 		if updatedTeam
 			render json: build_success_response(updatedTeam)

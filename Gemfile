@@ -49,6 +49,10 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 group :production do
 
 end

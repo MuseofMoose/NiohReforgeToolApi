@@ -9,14 +9,14 @@ class ApplicationController < ActionController::Base
 		json = {
 			:result_status => 'success',
 			:result_data => { :code => 200, :message => 'OK', :data => data },
-		}.to_json
+		}
 	end
 
 	def build_error_response(code, message, data = nil)
 		json = {
 			:result_status => 'error',
 			:result_data => { :code => code, :message => message, :data => data },
-		}.to_json
+		}
 	end
 
 	def handle_missing_required_params_error(exception)

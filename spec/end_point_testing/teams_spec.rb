@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "getting a team by id", type: :request do
 	before(:each) do
-		@route = ROUTE_PREFIX + "get_by_id/"
+		@route = ROUTE_PREFIX + "teams/get_by_id/"
   end
 
 	context "with a valid id" do
@@ -42,7 +42,7 @@ end
 
 describe "creating a new team", type: :request do
 	before(:each) do
-		@route = ROUTE_PREFIX + "create"
+		@route = ROUTE_PREFIX + "teams/create"
 	end
 
 	context "with valid params" do
@@ -102,7 +102,7 @@ end
 
 describe "updating a team", type: :request do
 	before(:each) do
-		@route = ROUTE_PREFIX + "update_by_id/"
+		@route = ROUTE_PREFIX + "teams/update_by_id/"
 	end
 
 	context "with valid params" do

@@ -7,9 +7,16 @@ Rails.application.routes.draw do
 
   namespace :api do
   	namespace :v1 do
-	    get 'get_by_id/:id', to: 'teams#get_by_id'
-	    post 'create', to: 'teams#create'
-	    patch 'update_by_id/:id', to: 'teams#update_by_id'
+      scope :teams do
+	     get 'get_by_id/:id', to: 'teams#get_by_id'
+	     post 'create', to: 'teams#create'
+	     patch 'update_by_id/:id', to: 'teams#update_by_id'
+      end
+
+      scope :weapon_attributes do
+        get 'get_all', to: 'weapon_attributes#get_all'
+        get 'get_by_id/:id', to: 'weapon_attributes#get_by_id'
+      end
 	  end
   end
 end

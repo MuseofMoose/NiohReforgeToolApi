@@ -6,7 +6,7 @@ class Api::V1::WeaponAttributesController < ApplicationController
 
 	def get_by_id
 		weapon_attribute = WeaponAttribute.find_by!(id: params[:id], active: true)
-		render json: build_success_response(weapon_attribute), except: [:active, :created_at, :updated_at]
+		render json: build_success_response(weapon_attribute)
 	end
 
 	#create function to fetch replacable attributes based on weapon's current attributes
@@ -23,6 +23,8 @@ class Api::V1::WeaponAttributesController < ApplicationController
 		#create function to fetch sub_group list based on existing attributes
 		#create function to fetch singleton exclusions for the rolled_attribute
 		#and any attributes that belong to the no conflicts group (or special exception)
+
+		#or maybe it's better to just fetch all viable rolls for each replaceable stat
 
 		rollable_attributes_array = WeaponAttribute.where("id != ?", params[:ids])
 	end
